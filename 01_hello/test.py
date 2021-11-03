@@ -38,3 +38,13 @@ def test_input():
             rv, out = getstatusoutput(f'{prg} {option} {val}')
             assert rv == 0
             assert out.strip() == f'Hello, {val}!'
+
+
+'''
+I’ve written the tests in an order that I hope will help you write the program in a logical
+fashion. If the program doesn’t pass one of the tests, there’s no reason to continue
+running the tests after it. I recommend you always run the tests with the flags -x, to
+stop on the first failing test, and -v, to print verbose output. You can combine these
+like -xv or -vx.
+'''
+  
