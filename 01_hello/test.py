@@ -12,7 +12,7 @@ def test_exits():
 
 
 def test_runnable():
-    """Runs using python3"""
+    """Runs using python"""
     out = getoutput(f'python3 {prg}')
     assert out.strip() == 'Hello, World!'
 
