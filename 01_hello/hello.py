@@ -1,10 +1,9 @@
 #!/usr/bin/env python
-
 # Purpose: Say hello
-print('Hello, World!')
 
+import argparse
 
-'''
-Making a program executable
-$ chmod +x hello.py
-'''
+parser = argparse.ArgumentParser(description='Salimiana')
+parser.add_argument('jina', help='Jina la kusalimia')
+args = parser.parse_args()
+print('Habari, ' + args.jina + '!')
