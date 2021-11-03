@@ -1,6 +1,10 @@
-"How to write and test a Python program"
-'Creating your first program'
-#!/usr/bin/env python3
+#!/usr/bin/env python
+
 # Purpose: Say hello
 print('Hello, World!')
- 
+
+
+'''
+Making a program executable
+$ chmod +x hello.py
+'''
