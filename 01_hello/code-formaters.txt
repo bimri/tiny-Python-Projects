@@ -1,0 +1,16 @@
+The PEP 8 (Python Enhancement Proposal) document at www.python.org/dev/peps/
+pep-0008/ describes best practices for formatting code, and most editors will automatically
+apply formatting for you. For instance, the Repl.it interface has an autoformat
+button (see figure I.7), VS Code has a Format Document command, and PyCharm has
+a Reformat Code command.
+
+There are also command-line tools that integrate with your editor. I used YAPF (Yet
+Another Python Formatter, https://github.com/google/yapf) to format every program
+in the book, but another popular formatter is Black (https://github.com/psf/
+black). Whatever you use, I encourage you to use it often. For instance, I can tell YAPF
+to format the hello.py program that we will write in chapter 1 by running the following
+command. Note that the -i tells YAPF to format the code “in place,” so that the
+original file will be overwritten with the newly formatted code.
+
+
+$ python -m yapf -i hello.py

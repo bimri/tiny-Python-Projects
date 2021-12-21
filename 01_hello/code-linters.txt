@@ -1,0 +1,8 @@
+A code linter is a tool that will report problems in your code, such as declaring a variable
+but never using it. Two that I like are Pylint (www.pylint.org/) and Flake8
+(http://flake8.pycqa.org/en/latest/), and both can find errors in your code that the
+Python interpreter itself will not complain about.
+
+In the final chapter, I will show you how to incorporate type hints into your code
+that the Mypy tool (http://mypy-lang.org/) can use to find problems, such as using
+text when you should be using a number.
