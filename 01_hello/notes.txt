@@ -1,0 +1,123 @@
+Testing your program
+    - pytest to execute all the commands
+    - tell us how many tests we passed
+    - -v option, which tells pytest to create “verbose” output
+
+NOTE If you get the error “pytest: command not found,” you need to install
+the pytest module.
+
+
+How to start writing new programs
+    - For each chapter, the program you write needs to live in the directory that has
+    the test.py file for that program.
+
+
+
+Adding the #! (shebang) line
+    - One thing you have learned so far is that Python programs live in plain text files that
+    you ask python3 to execute.
+    - It’s common to put a special comment line in programs
+    like these to indicate which language needs to be used to execute the commands in
+    the file.
+    - This comment line starts off with #!, and the nickname for this is “shebang” (pronounced
+    “shuh-bang”—I always think of the # as the “shuh” and the ! as the “bang!”).
+    Just as with any other comment, Python will ignore the shebang, but the operating system
+    (like macOS or Windows) will use it to decide which program to use to run the
+    rest of the file.
+    
+    - The env program will tell you about your “environment.” When I run env on my computer,
+    I see many lines of output like USER=kyclark and HOME=/Users/kyclark. These
+    values are accessible as the variables $USER and $HOME:
+        $ echo $USER
+        kyclark
+        $ echo $HOME
+        /Users/kyclark
+
+
+
+Making a program executable
+    - So far we’ve been explicitly telling python3 to run our program,
+    but since we added the shebang, we can execute the
+    program directly and let the OS figure out that it should use
+    python3. The advantage of this is that we could copy our program
+    to a directory where other programs live and execute it
+    from anywhere on our computer.
+
+    - The first step in doing this is to make our program “executable”
+    using the command chmod (change mode). Think of it as
+    turning your program “on.” Run this command to make hello.py
+    executable:
+        $ chmod +x hello.py
+    
+    Now you can run the program like so:
+        $ ./hello.py
+    
+
+
+Understanding $PATH
+    - One of the biggest reasons to set the shebang line and make your program executable
+    is so that you can install your Python programs just like other commands and programs.
+    We used the which command earlier to find the location of python3 on the
+    Repl.it instance:
+        $ which python3
+        /home/runner/.local/share/virtualenvs/python3/bin/python3
+    
+    - How was the env program able to find it? Windows, macOS, and Linux all have a
+    $PATH variable, which is a list of directories the OS will look in to find a program. For
+    instance, here is the $PATH for my Repl.it instance:
+    > echo $PATH
+    /home/runner/.local/share/virtualenvs/python3/bin:/usr/local/bin:\
+    /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+    - The directories are separated by colons (:). Notice that the directory where python3
+    lives is the first one in $PATH.
+
+    - If you copy your hello.py program to any of the directories
+    listed in your $PATH, you can execute a program like hello.py without the leading ./
+    and without having to be in the same directory as the program.
+
+    - The $PATH variable is a way of telling your computer to only look in places where
+    executable programs can be found. The only alternative is for the OS to search every
+    directory, and that could take several minutes or possibly even hours! You can control
+    both the names of the directories in the $PATH variable and their relative order so that
+    the OS will find the programs you need.
+
+    - It’s very common for programs to be installed into /usr/local/bin, so we could try
+    to copy our program there using the cp command. Unfortunately, I do not have permission
+    to do this on Repl.it:
+        > cp 01_hello/hello.py /usr/local/bin
+        cp: cannot create regular file '/usr/local/bin/hello.py': Permission denied
+    
+
+
+Altering your $PATH
+    - Often you may find yourself working on a computer that won’t allow you to install programs
+    into your $PATH, such as on Repl.it. An alternative is to alter your $PATH to
+    include a directory where you can put your programs.
+
+    - For instance, I often create a bin directory in my home directory, which can often be written 
+    with the tilde (~).
+
+    - On most computers, ~/bin would mean “the bin directory in my home directory.”
+    It’s also common to see $HOME/bin where $HOME is the name of your home directory.
+
+    - Here is how I create this directory on the Repl.it machine, copy a program to it, and
+    then add it to my $PATH:
+        $ mkdir ~/bin
+        $ cp 01_hello/hello.py ~/bin
+        $ PATH=~/bin:$PATH
+        $ which hello.py  
+
+    - Although the shebang and the executable stuff may seem like a lot of work, the payoff
+    is that you can create a Python program that can be installed onto your computer or
+    anyone else’s and run just like any other program.
+
+
+
+Adding a parameter and help
+    - providing that value as as an argument to our program
+      
+    - How would the person using our program know to do this? It’s our program’s responsibility
+    to provide a help message! Most command-line programs will respond to arguments
+    like -h and --help with helpful messages about how to use the programs.
+    
