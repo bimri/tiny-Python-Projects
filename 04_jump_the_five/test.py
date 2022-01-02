@@ -1,13 +1,26 @@
-#!/usr/bin/env python 
+#!/usr/bin/env python
 """tests for jump.py"""
 
-import os 
+import os
 from subprocess import getstatusoutput
 
-prg = './jump.py'
+prg = "./jump.py"
 
 
 def test_exists():
     """exists"""
     assert os.path.isfile(prg)
 
+
+def test_01():
+    """test"""
+    rv, out = getstatusoutput(f"{prg} 123-456-7890")
+    assert rv == 0
+    assert out == "987-604-3215"
+
+
+def test_02():
+    """test"""
+    rv, out = getstatusoutput(f'{prg} "That number to call is 098-765-4321."')
+    assert rv == 0
+    assert out.rstrip() == "That number to call is 512-340-6789."
